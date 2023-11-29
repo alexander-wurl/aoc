@@ -7,8 +7,8 @@ pr:
 jobs:
 - job: Build
   displayName: 'Build Job'
-  pool:
-    name: ProjektPool
+#  pool:
+#    name: ProjektPool
   steps:
   - task: UsePythonVersion@0
     inputs:
@@ -47,3 +47,4 @@ jobs:
       echo "Führe den Bereitstellungsschritt durch, z. B. kopiere Dateien auf deinen Server."
       # Füge hier deine eigenen Bereitstellungsschritte hinzu
     displayName: 'Bereitstellungsschritte'
+
