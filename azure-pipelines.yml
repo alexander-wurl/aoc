@@ -1,15 +1,45 @@
-# Python package
-# Create and test a Python package on multiple Python versions.
-# Add steps that analyze code, save the dist with the build record, publish to a PyPI-compatible index, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/python
-
 trigger:
 - main
 
-pool:
-  name: ProjektPool
-  #vmImage: ubuntu-20.04
+pr:
+- '*'
 
-steps:
-- script: echo "Installiere Abhängigkeiten, führe Tests aus, etc."
-  displayName: 'Build und Tests'
+jobs:
+- job: Build
+  displayName: 'Build Job'
+  pool:
+    name: ProjektPool
+  steps:
+  - task: UsePythonVersion@0
+    inputs:
+      versionSpec: '3.x'  # Verwende die gewünschte Python-Version
+
+#  - script: |
+#      python -m pip install --upgrade pip
+#      pip install -r requirements.txt
+#    displayName: 'Installiere Python-Pakete'
+
+  - script: |
+      python -m unittest discover tests
+    displayName: 'Führe Tests durch'
+
+  - task: PublishPipelineArtifact@1
+    inputs:
+      targetPath: '$(Build.SourcesDirectory)'
+      artifact: 'python-app'
+
+- job: Deploy
+  displayName: 'Deploy Job'
+  dependsOn: Build
+  condition: succeeded()
+  pool:
+    name: Default
+  steps:
+  - download: current
+    artifact: 'python-app'
+    displayName: 'Download Build Artefakt'
+
+  - script: |
+      echo "Führe den Bereitstellungsschritt durch, z. B. kopiere Dateien auf deinen Server."
+      # Füge hier deine eigenen Bereitstellungsschritte hinzu
+    displayName: 'Bereitstellungsschritte'
