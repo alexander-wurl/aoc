@@ -28,6 +28,8 @@ jobs:
       targetPath: '$(Build.SourcesDirectory)'
       artifact: 'python-app'
 
+  - script: |
+      echo '$(Build.SourcesDirectory)'
 #- job: Deploy
 #  displayName: 'Deploy Job'
 #  dependsOn: Build
