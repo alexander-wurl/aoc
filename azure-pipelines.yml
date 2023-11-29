@@ -27,6 +27,12 @@ jobs:
     inputs:
       targetPath: '$(Build.SourcesDirectory)'
       artifact: 'python-app'
+  
+  - powershell: |
+      # Beispiel: npm install in einem Node.js-Projekt
+      cd $(Build.SourcesDirectory)\path\to\your\nodejs\project
+      npm install
+    displayName: 'Node.js-Paket installieren'
 
   - script: |
       echo "#############################"
