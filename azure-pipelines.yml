@@ -13,7 +13,6 @@ jobs:
   - powershell: |
       # Beispiel: npm install in einem Node.js-Projekt
       echo $(Build.SourcesDirectory)
-      npm install
     displayName: 'Node.js-Paket installieren'
   - task: UsePythonVersion@0
     inputs:
