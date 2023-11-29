@@ -7,8 +7,7 @@ pr:
 jobs:
 - job: Build
   displayName: 'Build Job'
-#  pool:
-#    name: ProjektPool
+
   steps:
 
   - powershell: |
