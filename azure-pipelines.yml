@@ -29,7 +29,9 @@ jobs:
       artifact: 'python-app'
 
   - script: |
+      echo "#############################"
       echo '$(Build.SourcesDirectory)'
+      echo "#############################"
 #- job: Deploy
 #  displayName: 'Deploy Job'
 #  dependsOn: Build
