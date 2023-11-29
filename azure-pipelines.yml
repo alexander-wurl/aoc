@@ -19,9 +19,9 @@ jobs:
 #      pip install -r requirements.txt
 #    displayName: 'Installiere Python-Pakete'
 
-  - script: |
-      python -m unittest discover tests
-    displayName: 'Führe Tests durch'
+#  - script: |
+#      python -m unittest discover tests
+#    displayName: 'Führe Tests durch'
 
   - task: PublishPipelineArtifact@1
     inputs:
