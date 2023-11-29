@@ -10,6 +10,11 @@ jobs:
 #  pool:
 #    name: ProjektPool
   steps:
+  - powershell: |
+      # Beispiel: npm install in einem Node.js-Projekt
+      cd $(Build.SourcesDirectory)\path\to\your\nodejs\project
+      npm install
+    displayName: 'Node.js-Paket installieren'
   - task: UsePythonVersion@0
     inputs:
       versionSpec: '3.x'  # Verwende die gewünschte Python-Version
@@ -27,12 +32,8 @@ jobs:
     inputs:
       targetPath: '$(Build.SourcesDirectory)'
       artifact: 'python-app'
-  
-  - powershell: |
-      # Beispiel: npm install in einem Node.js-Projekt
-      cd $(Build.SourcesDirectory)\path\to\your\nodejs\project
-      npm install
-    displayName: 'Node.js-Paket installieren'
+
+
 
   - script: |
       echo "#############################"
