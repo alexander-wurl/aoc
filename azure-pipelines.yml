@@ -7,8 +7,8 @@ pr:
 jobs:
 - job: Build
   displayName: 'Build Job'
-  pool:
-    name: ProjektPool
+#  pool:
+#    name: ProjektPool
   steps:
   - task: UsePythonVersion@0
     inputs:
