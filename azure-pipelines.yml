@@ -11,8 +11,9 @@ jobs:
 #    name: ProjektPool
   steps:
   - powershell: |
-      # Beispiel: npm install in einem Node.js-Projekt
+      echo "#############################"
       echo $(Build.SourcesDirectory)
+      echo "#############################"
     displayName: 'Node.js-Paket installieren'
   - task: UsePythonVersion@0
     inputs:
